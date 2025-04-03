@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.VideoTest"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.VideoTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".exoplayer.ExoplayerTestActivity"
+            android:exported="false"
+            android:theme="@style/Theme.VideoTest" />
+
+        <activity
+            android:name=".pip.PipTest1Activity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="true"
+            android:supportsPictureInPicture="true"
+            android:theme="@style/Theme.VideoTest" />
+
+        <activity
+            android:name=".pip.PipTest2Activity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="true"
+            android:supportsPictureInPicture="true"
+            android:theme="@style/Theme.VideoTest" />
+
+        <activity
+            android:name=".pip.PipTest3Activity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="true"
+            android:supportsPictureInPicture="true"
+            android:theme="@style/Theme.VideoTest" />
+
+        <activity
+            android:name=".pip.PipTest4Activity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="true"
+            android:supportsPictureInPicture="true"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.VideoTest" />
+
+        <receiver android:name=".pip.PiPActionReceiver"
+            android:exported="true"
+            android:permission="android.permission.INTERNET">
+            <intent-filter>
+                <action android:name="ACTION_PLAY" />
+                <action android:name="ACTION_PAUSE" />
+                <action android:name="ACTION_STOP" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
