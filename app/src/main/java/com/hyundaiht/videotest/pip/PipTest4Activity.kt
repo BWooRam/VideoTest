@@ -6,6 +6,7 @@ import android.app.PictureInPictureParams
 import android.app.RemoteAction
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.Configuration
 import android.graphics.drawable.Icon
 import android.os.Build
 import android.os.Bundle
@@ -47,6 +48,11 @@ class PipTest4Activity : ComponentActivity() {
         super.onNewIntent(intent)
         Log.d(tag, "onNewIntent action = ${intent.action}")
         handleIntentAction(intent)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        Log.d(tag, "onConfigurationChanged newConfig = $newConfig}")
     }
 
     private fun handleIntentAction(intent: Intent) {
