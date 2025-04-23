@@ -126,7 +126,8 @@ class PipTest2Activity : ComponentActivity() {
 
                     context
                         .findActivity()
-                        .setPictureInPictureParams(params.build())
+                        .setPictureInPictureParams(params
+                            .build())
                 }, factory = { context ->
                 PlayerView(context).apply {
                     this.player = player

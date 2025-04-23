@@ -10,16 +10,6 @@ class PiPActionReceiver: BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         Log.d(tag, "onReceive action = ${intent.action}")
-        when (intent.action) {
-            "ACTION_PLAY" -> PipTest3Activity.pipEvent.postValue("ACTION_PLAY")
-            "ACTION_PAUSE" -> PipTest3Activity.pipEvent.postValue("ACTION_PAUSE")
-            "ACTION_STOP" -> PipTest3Activity.pipEvent.postValue("ACTION_STOP")
-        }
+        PipTest3Activity.pipEvent.postValue(intent.action)
     }
-}
-
-interface PipAction {
-    fun onPlay()
-    fun onPause()
-    fun onStop()
 }

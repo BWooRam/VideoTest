@@ -4,6 +4,7 @@ import android.app.PictureInPictureParams
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.util.Rational
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,7 +19,7 @@ import androidx.media3.ui.PlayerView
 
 
 class PipTest1Activity : ComponentActivity() {
-
+    private val tag = javaClass.simpleName
     private var player: ExoPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,12 +52,21 @@ class PipTest1Activity : ComponentActivity() {
     private fun enterPipMode() {
         val params = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             PictureInPictureParams.Builder()
-                .setAspectRatio(Rational(16, 9))
-                .setAutoEnterEnabled(true)
+//                .setAspectRatio(Rational(16, 9))
+//                .setAutoEnterEnabled(true)
         } else {
             PictureInPictureParams.Builder()
-                .setAspectRatio(Rational(16, 9))
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Log.d(tag, "enterPipMode add Title, Subtitle")
+            params.setTitle("Title")
+                .setSubtitle("Subtitle")
+                .setAspectRatio(Rational(16, 9))
+                .setExpandedAspectRatio(Rational(21, 9))
+                .setSeamlessResizeEnabled(false)
+        }
+
         enterPictureInPictureMode(params.build())
     }
 
